@@ -1,5 +1,5 @@
-import uuid
-import datetime
+from datetime import datetime
+from uuid import uuid4
 
 class MagnetLinkModel:
   create_date: str
@@ -13,8 +13,8 @@ class MagnetLinkModel:
     name: str,
     uri: str,
     creator_id: str,
-    create_date = datetime.datetime.utcnow().isoformat(),
-    id = str(uuid.uuid4())
+    create_date: str = datetime.utcnow().isoformat(),
+    id: str = str(uuid4())
   ):
     self.name = name
     self.uri = uri
