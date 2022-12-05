@@ -2,12 +2,18 @@ import sqlite3
 
 class SqLite:
   def __init__(self, filename = "magnet_database.db"):
-    self._db = sqlite3.connect(filename)
+    self._conn = sqlite3.connect(filename, check_same_thread=False)
 
   def query(self, sql: str, parameters: list[any] = ()) -> list[any]:
-    res = self._db.cursor()
-    res.execute(sql.strip(), parameters)
     if sql.strip().startswith("INSERT"):
-      self._db.commit()
+      try:
+        cur = self._conn.cursor()
+        cur.execute(sql, parameters)
+        self._conn.commit()
+      except Exception as exception:
+        self._conn.rollback()
+        raise exception
     else:
-      return res.fetchall()
+      cur = self._conn.cursor()
+      cur.execute(sql, parameters)
+      return cur.fetchall()

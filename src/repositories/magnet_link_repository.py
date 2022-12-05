@@ -7,12 +7,12 @@ class MagnetLinkRepository(Repository):
 
   def create(self, data: MagnetLinkModel) -> None:
     self._db.query(
-      f"INSERT INTO magnet_links(id, name, uri, creator_id, create_date) VALUES(?, ?, ?, ?, ?);",
-      [data.id, data.name, data.uri, data.creator_id, data.create_date]
+      f"INSERT INTO magnet_links(id, name, uri, creator_id, create_date, hash) VALUES(?, ?, ?, ?, ?, ?);",
+      [data.id, data.name, data.uri, data.creator_id, data.create_date, data.hash]
     )
 
   def get(self, id: str) -> MagnetLinkModel:
     return self._db.query(f"SELECT * FROM magnet_links WHERE id = ?;", [id])
 
   def list_by_name(self, name: str) -> list[MagnetLinkModel]:
-    return self._db.query(f"SELECT * FROM magnet_links WHERE name LINK %?%;", [name])
+    return self._db.query(f"SELECT * FROM magnet_links WHERE name = ?;", [name])
