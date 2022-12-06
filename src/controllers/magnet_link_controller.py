@@ -1,4 +1,5 @@
 from flask import request
+
 from app.magnet_link.create_magnet_link import CreateMagnetLink
 from app.magnet_link.search_magnet_links import SearchMagnetLinks
 from model.magnet_link_model import MagnetLinkModel
