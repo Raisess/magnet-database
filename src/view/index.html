@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Magnet Database</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
+</head>
+<body>
+  <header class="container">
+    <div class="col-lg-12 pt-4 ps-5 pe-5">
+    <h1>Magnet Database</h1>
+    </div>
+  </header>
+  <main class="container">
+    <div id="main-section" class="col-lg-12 pt-4 ps-5 pe-5">
+      <div id="search-section" class="mt-2">
+        <form method="GET" action="/search_magnet_links">
+          <label>Search for something:</label>
+          <input type="text" name="name" placeholder="Name" />
+          <input type="submit" value="Enter" />
+        </form>
+      </div>
+      <div id="options-section" class="mt-2">
+        <button class="btn btn-success">
+          Add a Magnet Link
+        </button>
+        <button class="btn btn-primary">
+          Felling lucky
+        </button>
+      </div>
+    </div>
+  </main>
+  <footer class="border-top pt-3 container mt-4">
+    <div class="ms-4 me-4">
+      <b>GitHub Repo: <a href="https://github.com/Raisess/magnet-database" target="_blank">magnet-database</a></b>
+      <p class="text-secondary">Thanks for using, the data stored here do not have relation with the code repository or with the project creator's. @ <a href="https://github.com/Raisess" target="_blank">Raisess</a></p>
+    </div>
+  </footer>
+</body>
+</html>
