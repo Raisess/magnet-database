@@ -14,20 +14,15 @@
   </header>
   <main class="container pt-4 pb-4">
     <div id="main-section" class="col-lg-12 ps-5 pe-5">
+      <div id="options-section" class="mt-2">
+        <p>&#x2022; <a href="/create_magnet_link">Add new magnet link</a></p>
+      </div>
       <div id="search-section" class="mt-2">
         <form method="GET" action="/search_magnet_links">
           <label>Search for something:</label>
           <input type="text" name="name" placeholder="Name" />
           <input type="submit" value="Enter" />
         </form>
-      </div>
-      <div id="options-section" class="mt-2">
-        <button class="btn btn-success">
-          <a href="/create_magnet_link" class="text-decoration-none text-white">Add a Magnet Link</a>
-        </button>
-        <button class="btn btn-primary">
-          Felling lucky
-        </button>
       </div>
     </div>
     <div id="result-box" class="text-break col-lg-12 pt-4 ps-5 pe-5">
