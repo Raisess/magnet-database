@@ -15,15 +15,15 @@ class MagnetLinkModel:
     name: str,
     uri: str,
     creator_id: str,
-    create_date: str = datetime.utcnow().isoformat(),
-    id: str = str(uuid4()),
+    create_date: str = None,
+    id: str = None,
     hash: str = None
   ):
     self.name = name
     self.uri = uri
     self.creator_id = creator_id
-    self.create_date = create_date
-    self.id = id
+    self.create_date = create_date or datetime.utcnow().isoformat()
+    self.id = id or str(uuid4())
     self.hash = hash or sha256((name + uri + creator_id + create_date + id).encode("utf-8")).hexdigest()
 
 
