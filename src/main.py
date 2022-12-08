@@ -17,8 +17,9 @@ def index() -> str:
 def create_magnet_link() -> str | None:
   try:
     if request.method == "POST":
-      magnet_link_controller.create_magnet_link()
       name = request.form["name"]
+      uri = request.form["uri"]
+      magnet_link_controller.create_magnet_link(name, uri)
       return redirect(f"/search_magnet_links?name={name}")
 
     html = View("pages/magnet_link/create_magnet_link")
@@ -30,7 +31,8 @@ def create_magnet_link() -> str | None:
 @app.route("/search_magnet_links", methods = ["GET"])
 def search_magnet_links() -> str:
   try:
-    result = magnet_link_controller.search_magnet_links()
+    name = request.args.get("name")
+    result = magnet_link_controller.search_magnet_links(name)
     html = View("pages/magnet_link/search_magnet_links")
     return html.render({ "magnet_links": result })
   except Exception as exception:
