@@ -17,9 +17,7 @@ class MagnetLinkRepository(Repository):
 
   def list_by_name(self, name: str) -> list[MagnetLinkModel]:
     data = self._db.query(f"SELECT * FROM magnet_links WHERE name LIKE '%{name}%';")
-
-    result = []
-    for item in data:
-      result.append(MagnetLinkModel(name=item[1], uri=item[2], creator_id=item[3], create_date=item[4], id=item[0], hash=item[5]))
-
-    return result
+    return [
+      MagnetLinkModel(name=item[1], uri=item[2], creator_id=item[3], create_date=item[4], id=item[0], hash=item[5])
+      for item in data
+    ]
