@@ -5,7 +5,7 @@ class View:
     self._filename = filename
 
   def render(self, parameters: dict[str, any] = {}) -> str:
-    file = open(f"./src/view/{self._filename}.html", "r")
+    file = open(f"./public/{self._filename}.html", "r")
     template = Template(file.read())
     file.close()
     return template.render(parameters)

@@ -3,7 +3,7 @@
 from flask import Flask, request
 
 from controllers import magnet_link_controller
-from view.view import View
+from view import View
 
 app = Flask(__name__)
 
@@ -22,7 +22,7 @@ def create_magnet_link() -> str:
       return html.render()
     else:
       # TODO: create create_magnet_link.html page
-      html = View("magnet_link/create_magnet_link")
+      html = View("pages/magnet_link/create_magnet_link")
       return html.render()
   except Exception as exception:
     return "ERROR: " + str(exception)
@@ -32,7 +32,7 @@ def create_magnet_link() -> str:
 def search_magnet_links() -> str:
   try:
     result = magnet_link_controller.search_magnet_links()
-    html = View("magnet_link/search_magnet_links")
+    html = View("pages/magnet_link/search_magnet_links")
     return html.render({ "magnet_links": result })
   except Exception as exception:
     return "ERROR: " + str(exception)
