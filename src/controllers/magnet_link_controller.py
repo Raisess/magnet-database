@@ -10,14 +10,14 @@ class MagnetLinkController:
     create_magnet_link: CreateMagnetLink,
     search_magnet_links: SearchMagnetLinks
   ):
-    self._create_magnet_link = create_magnet_link
-    self._search_magnet_links = search_magnet_links
+    self.__create_magnet_link = create_magnet_link
+    self.__search_magnet_links = search_magnet_links
 
   def create_magnet_link(self) -> None:
     name = request.form["name"]
     uri = request.form["uri"]
-    return self._create_magnet_link.handle(name, uri, "temp")
+    return self.__create_magnet_link.handle(name, uri, "temp")
 
   def search_magnet_links(self) -> list[MagnetLinkModel]:
     name = request.args.get("name")
-    return self._search_magnet_links.handle(name)
+    return self.__search_magnet_links.handle(name)
