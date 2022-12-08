@@ -1,3 +1,3 @@
 # Magnet Database
 
-A web app to store magnet links, written in python, simple as possible.
+A web app to index magnet links, written in python, simple as possible.
