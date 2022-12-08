@@ -24,7 +24,9 @@ class MagnetLinkModel:
     self.creator_id = creator_id
     self.create_date = create_date or datetime.utcnow().isoformat()
     self.id = id or str(uuid4())
-    self.hash = hash or sha256((name + uri + creator_id + create_date + id).encode("utf-8")).hexdigest()
+    self.hash = hash or sha256(
+      (self.name + self.uri + self.creator_id + self.create_date + self.id).encode("utf-8")
+    ).hexdigest()
 
 
 CREATE_MAGNET_LINK_TABLE_QUERY = """
