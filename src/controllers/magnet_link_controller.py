@@ -15,7 +15,7 @@ class MagnetLinkController:
     if not uri.startswith("magnet:?") and not uri.endswith(".torrent"):
       raise Exception("Invalid uri format, try a .torrent file or a magnet link")
 
-    return self.__create_magnet_link.handle(name, uri, "temp")
+    return self.__create_magnet_link.handle(name, uri)
 
   def search_magnet_links(self, name: str) -> list[MagnetLinkModel]:
     return self.__search_magnet_links.handle(name)

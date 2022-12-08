@@ -14,18 +14,16 @@ class MagnetLinkModel:
     self,
     name: str,
     uri: str,
-    creator_id: str,
     create_date: str = None,
     id: str = None,
     hash: str = None
   ):
     self.name = name
     self.uri = uri
-    self.creator_id = creator_id
     self.create_date = create_date or datetime.utcnow().isoformat()
     self.id = id or str(uuid4())
     self.hash = hash or sha256(
-      (self.name + self.uri + self.creator_id + self.create_date + self.id).encode("utf-8")
+      (self.name + self.uri + self.create_date + self.id).encode("utf-8")
     ).hexdigest()
 
 
@@ -34,7 +32,6 @@ CREATE_MAGNET_LINK_TABLE_QUERY = """
     id          VARCHAR(36) UNIQUE,
     name        VARCHAR(100),
     uri         VARCHAR(255) UNIQUE,
-    creator_id  VARCHAR(36),
     create_date DATETIME,
     hash        VARCHAR(64) UNIQUE
   );
