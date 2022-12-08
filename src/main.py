@@ -18,12 +18,9 @@ def create_magnet_link() -> str:
   try:
     if request.method == "POST":
       magnet_link_controller.create_magnet_link()
-      html = View("index")
-      return html.render()
-    else:
-      # TODO: create create_magnet_link.html page
-      html = View("pages/magnet_link/create_magnet_link")
-      return html.render()
+
+    html = View("pages/magnet_link/create_magnet_link")
+    return html.render()
   except Exception as exception:
     return "ERROR: " + str(exception)
 
