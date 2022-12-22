@@ -5,15 +5,11 @@ class SqLite:
     self.__conn = sqlite3.connect(filename, check_same_thread=False)
 
   def query(self, sql: str, parameters: list[any] = ()) -> list[any]:
-    if sql.strip().startswith("INSERT"):
-      try:
-        cur = self.__conn.cursor()
-        cur.execute(sql, parameters)
-        self.__conn.commit()
-      except Exception as exception:
-        self.__conn.rollback()
-        raise exception
-    else:
-      cur = self.__conn.cursor()
-      cur.execute(sql, parameters)
-      return cur.fetchall()
+    try:
+      cursor = self.__conn.cursor()
+      cursor.execute(sql, parameters)
+      self.__conn.commit()
+      return cursor.fetchall()
+    except Exception as exception:
+      self.__conn.rollback()
+      raise exception
